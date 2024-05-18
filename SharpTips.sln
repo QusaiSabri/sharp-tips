@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpTips.Infrastructure", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SharpTips.Presentation", "SharpTips.Presentation", "{8E96E6C4-8FEB-4A4C-8A6E-E3D1A9D5BF57}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharpTips.Application", "SharpTips.Application\SharpTips.Application.csproj", "{5284B17C-9185-4590-9CAC-0C3EAF2A3168}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0BF35E90-A979-4678-B6B4-027B91B57DC3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0BF35E90-A979-4678-B6B4-027B91B57DC3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0BF35E90-A979-4678-B6B4-027B91B57DC3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5284B17C-9185-4590-9CAC-0C3EAF2A3168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5284B17C-9185-4590-9CAC-0C3EAF2A3168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5284B17C-9185-4590-9CAC-0C3EAF2A3168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5284B17C-9185-4590-9CAC-0C3EAF2A3168}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +48,7 @@ Global
 		{E7E9A376-D9C4-4795-9798-9101E61A57D4} = {3C7B8739-9F35-4144-BDF5-2EEFE966494D}
 		{0BF35E90-A979-4678-B6B4-027B91B57DC3} = {3C7B8739-9F35-4144-BDF5-2EEFE966494D}
 		{8E96E6C4-8FEB-4A4C-8A6E-E3D1A9D5BF57} = {3C7B8739-9F35-4144-BDF5-2EEFE966494D}
+		{5284B17C-9185-4590-9CAC-0C3EAF2A3168} = {3C7B8739-9F35-4144-BDF5-2EEFE966494D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {832FF30E-E0A5-4C3F-BBD4-837B2D620E18}
