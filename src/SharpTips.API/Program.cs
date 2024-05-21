@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using SharpTips.Application.Interfaces;
+using SharpTips.Application.Services;
 using SharpTips.Infrastructure.Data;
 using SharpTips.Infrastructure.Repositories;
 
@@ -16,6 +17,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
 builder.Services.AddScoped<IFlightBookingRepository, FlightBookingRepository>();
+builder.Services.AddScoped<IFlightBookingService, FlightBookingService>();
 
 var app = builder.Build();
 

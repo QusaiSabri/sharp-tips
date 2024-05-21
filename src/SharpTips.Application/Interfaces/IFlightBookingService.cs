@@ -2,9 +2,9 @@
 
 namespace SharpTips.Application.Interfaces
 {
-    public interface IFlightBookingRepository
+    public interface IFlightBookingService
     {
-        Task<FlightBooking> AddFlightBookingAsync(FlightBooking booking);
+        Task<FlightBooking> CreateFlightBookingAsync(FlightBooking booking);
         Task DeleteFlightBookingAsync(int id);
         Task<IEnumerable<FlightBooking>> GetFlightBookingsAsync();
     }

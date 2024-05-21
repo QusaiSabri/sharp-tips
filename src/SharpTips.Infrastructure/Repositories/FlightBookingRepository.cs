@@ -24,5 +24,13 @@ namespace SharpTips.Infrastructure.Repositories
         {
             return _context.FlightBookings.ToList();
         }
+
+        public async Task DeleteFlightBookingAsync(int id)
+        {
+            var booking = await _context.FlightBookings.FindAsync(id);
+            _context.FlightBookings.Remove(booking);
+
+            await _context.SaveChangesAsync();
+        }
     }
 }
