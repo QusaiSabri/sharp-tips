@@ -1,10 +1,12 @@
 <script setup lang="ts">
+import FlightBooking from './FlightBooking.vue'
 defineProps<{
   msg: string
 }>()
 </script>
 
 <template>
+  <FlightBooking />
   <div class="greetings">
     <h1 class="green">{{ msg }}</h1>
     <h3>
