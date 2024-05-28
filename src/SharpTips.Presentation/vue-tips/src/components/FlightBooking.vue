@@ -4,11 +4,29 @@
             <input type="text" v-model="from" placeholder="From" />
             <input type="text" v-model="to" placeholder="To" />
             <input type="date" v-model="date" />
-            <button @click="searchFlights">
+            <button @click="searchFlights" class="bg-red-500">
                 <i class="fa fa-search"></i>
             </button>
         </div>
         <!-- Add your flight search results here -->
+        <div class="flight-results">
+            <div v-for="flight in searchResults" :key="flight.id" class="flight-result">
+                <div class="flight-info">
+                    <div class="flight-route">
+                        <span>{{ flight.from }}</span>
+                        <i class="fa fa-long-arrow-alt-right"></i>
+                        <span>{{ flight.to }}</span>
+                    </div>
+                    <div class="flight-date">
+                        <span>Date: {{ flight.date }}</span>
+                    </div>
+                    <div class="flight-price">
+                        <span>Price: ${{ flight.price }}</span>
+                    </div>
+                </div>
+                <button @click="bookFlight(flight.id)">Book Now</button>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -18,9 +36,22 @@ import { ref } from 'vue';
 const from = ref('');
 const to = ref('');
 const date = ref('');
+const searchResults = ref([]);
 
 const searchFlights = () => {
-    // Implement flight search logic here
+    const flights = [
+        { id: 1, from: 'New York', to: 'Los Angeles', date: '2022-10-01', price: 250 },
+        { id: 2, from: 'London', to: 'Paris', date: '2022-09-15', price: 150 },
+        { id: 3, from: 'Tokyo', to: 'Sydney', date: '2022-11-05', price: 500 }
+    ];
+
+    // Return the first 3 flights as search results
+    searchResults.value = flights.slice(0, 3);
+    return searchResults.value;
+};
+
+const bookFlight = (flightId) => {
+    alert(`Flight with ID ${flightId} booked successfully!`);
 };
 
 </script>
