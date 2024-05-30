@@ -3,13 +3,13 @@
 @using MudBlazor
 <MudPopoverProvider/>
 
-<h3>FlightBooking</h3>
+<h3 class="">FlightBooking</h3>
 
-    <div Class="flex gap-4 bg-red-500">
+    <div Class="flex flex-row gap-4">
         <MudAutocomplete T="string" Label="From" @bind-Value="value1" SearchFunc="@Search1" Variant="Variant.Outlined" Strict=false Margin="Margin.None" />
         <MudAutocomplete T="string" Label="To" @bind-Value="value1" SearchFunc="@Search1" Variant="Variant.Outlined" Strict=false Margin="Margin.None" />
         <MudDatePicker  Label="Basic example" @bind-Date="date" Variant="Variant.Outlined" />
-        <MudIcon  Icon="@Icons.Material.Filled.Search" Style="font-size: 2rem;" />
+        <MudIcon Icon="@Icons.Material.Filled.Search" Style="font-size: 2rem;" />
     </div> 
 
 @code {
