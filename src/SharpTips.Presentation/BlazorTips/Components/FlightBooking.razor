@@ -1,38 +1,62 @@
 ﻿@page "/flights"
 @rendermode InteractiveServer
 @using MudBlazor
-<MudPopoverProvider/>
+<MudPopoverProvider />
 
-<h3 class="">FlightBooking</h3>
+<h1 class="text-xl">Search Flights</h1>
 
-    <div Class="flex flex-row gap-4">
-        <MudAutocomplete T="string" Label="From" @bind-Value="value1" SearchFunc="@Search1" Variant="Variant.Outlined" Strict=false Margin="Margin.None" />
-        <MudAutocomplete T="string" Label="To" @bind-Value="value1" SearchFunc="@Search1" Variant="Variant.Outlined" Strict=false Margin="Margin.None" />
-        <MudDatePicker  Label="Basic example" @bind-Date="date" Variant="Variant.Outlined" />
-        <MudIcon Icon="@Icons.Material.Filled.Search" Style="font-size: 2rem;" />
-    </div> 
+<div Class="flex flex-row gap-4">
+    <MudAutocomplete T="string" Label="From?" @bind-Value="fromCity" SearchFunc="@Search1" Variant="Variant.Outlined" Strict=false Margin="Margin.None" />
+    <MudIcon Icon="@Icons.Material.Filled.FlightTakeoff" Style="font-size: 2rem; align-self: center;" />
+    <MudAutocomplete T="string" Label="To?" @bind-Value="toCity" SearchFunc="@Search1" Variant="Variant.Outlined" Strict=false Margin="Margin.None" />
+    <MudDatePicker Label="Departure Date" @bind-Date="date" Variant="Variant.Outlined" />
+    <MudIcon Icon="@Icons.Material.Filled.Search" Style="font-size: 2rem; align-self: center;" onclick="@ShowFakeResults" />
+    <MudButton OnClick="@ShowFakeResults">Search</MudButton>
+</div>
+
+@foreach (var result in searchResults)
+{
+    <MudCard Class="my-2 bg-white rounded shadow-md">
+        <MudCardContent>
+            <p class="text-lg font-semibold text-gray-700">@result</p>
+        </MudCardContent>
+    </MudCard>
+}
 
 @code {
 
     DateTime? date = DateTime.Today;
 
-    private string value1;
-    private string[] states =
+    private string fromCity;
+    private string toCity;
+
+    private List<string> searchResults = new List<string>();
+
+    private string[] cities =
     {
-        "Alabama", "Alaska", "American Samoa", "Arizona",
-        "Arkansas", "California", "Colorado", "Connecticut",
-        "Delaware", "District of Columbia", "Federated States of Micronesia",
-        "Florida", "Georgia", "Guam", "Hawaii", "Idaho",
-        "Illinois", "Indiana", "Iowa", "Kansas", "Kentucky",
-        "Louisiana", "Maine", "Marshall Islands", "Maryland",
-        "Massachusetts", "Michigan", "Minnesota", "Mississippi",
-        "Missouri", "Montana", "Nebraska", "Nevada",
-        "New Hampshire", "New Jersey", "New Mexico", "New York",
-        "North Carolina", "North Dakota", "Northern Mariana Islands", "Ohio",
-        "Oklahoma", "Oregon", "Palau", "Pennsylvania", "Puerto Rico",
-        "Rhode Island", "South Carolina", "South Dakota", "Tennessee",
-        "Texas", "Utah", "Vermont", "Virgin Island", "Virginia",
-        "Washington", "West Virginia", "Wisconsin", "Wyoming",
+          "Dallas",
+          "Madrid",
+          "New York",
+          "Los Angeles",
+          "Chicago",
+          "Houston",
+          "Phoenix",
+          "Philadelphia",
+          "San Antonio",
+          "San Diego",
+          "San Jose",
+          "Austin",
+          "Jacksonville",
+          "Fort Worth",
+          "Columbus",
+          "Charlotte",
+          "San Francisco",
+          "Indianapolis",
+          "Seattle",
+          "Denver",
+          "Washington",
+          "Boston",
+          "Istanbul"
     };
 
     private async Task<IEnumerable<string>> Search1(string value)
@@ -42,7 +66,18 @@
 
         // if text is null or empty, show complete list
         if (string.IsNullOrEmpty(value))
-            return states;
-        return states.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+            return cities;
+        return cities.Where(x => x.Contains(value, StringComparison.InvariantCultureIgnoreCase));
+    }
+
+    private void ShowFakeResults()
+    {
+        if (fromCity == "Dallas" && toCity == "Madrid")
+        {
+            searchResults.Clear();
+            searchResults.Add("Flight 1: Dallas to Madrid");
+            searchResults.Add("Flight 2: Dallas to Madrid");
+            searchResults.Add("Flight 3: Dallas to Madrid");
+        }
     }
 }
